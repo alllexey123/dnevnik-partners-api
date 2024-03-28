@@ -1,4 +1,4 @@
-package me.alllexey123.model.user;
+package api.dnevnik.partners.model.user;
 
 import com.google.gson.annotations.SerializedName;
 
