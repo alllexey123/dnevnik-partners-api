@@ -1,12 +1,18 @@
 package api.dnevnik.partners.model.mark;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
+import api.dnevnik.partners.model.user.Person;
 import com.google.gson.annotations.SerializedName;
+import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Data
-public class Mark {
+public class Mark implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long id;
 
@@ -34,7 +40,7 @@ public class Mark {
 
     private int number;
 
-    private OffsetDateTime date;
+    private LocalDateTime date;
 
     private long workType;
 
@@ -53,5 +59,9 @@ public class Mark {
 
     public long getParsedLessonId() {
         return Long.parseLong(lessonStr);
+    }
+
+    public Single<Person> getPerson() {
+        return api.getPersonById(person);
     }
 }

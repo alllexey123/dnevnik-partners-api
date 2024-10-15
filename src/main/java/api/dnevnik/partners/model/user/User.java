@@ -1,13 +1,18 @@
 package api.dnevnik.partners.model.user;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
+import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
 
 import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
-public class User {
+public class User implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long id;
 
@@ -50,4 +55,8 @@ public class User {
     private List<Role> roles;
 
     private String phone;
+
+    public Single<Person> getPerson() {
+        return api.getPersonById(personId);
+    }
 }

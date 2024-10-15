@@ -1,6 +1,6 @@
 package api.dnevnik.partners.data;
 
-public interface DnevnikClientRepository {
+public interface AccessTokenRepository {
 
     void setAccessToken(String accessToken);
 

@@ -1,10 +1,14 @@
 package api.dnevnik.partners.model.user;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class School {
+public class School implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private String fullName;
 
@@ -26,7 +30,7 @@ public class School {
     @SerializedName("uses_weighted_avg")
     private boolean usesWeightedAvg;
 
-    private int id;
+    private long id;
 
     @SerializedName("id_str")
     private String idStr;

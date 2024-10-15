@@ -1,5 +1,6 @@
 package api.dnevnik.partners;
 
+import api.dnevnik.partners.model.ApiHolder;
 import api.dnevnik.partners.model.feed.UserFeedResponse;
 import api.dnevnik.partners.model.mark.*;
 import api.dnevnik.partners.model.mark.FinalMarksResponse;
@@ -21,6 +22,17 @@ import java.util.List;
  */
 public interface DnevnikPartnersApi {
 
+    //region Injection
+    default <T extends ApiHolder> T inject(T t) {
+        if (t != null) t.setApi(this);
+        return t;
+    }
+
+    default <T extends ApiHolder> List<T> injectMany(List<T> tList) {
+        if (tList != null) tList.forEach(t -> t.setApi(this));
+        return tList;
+    }
+    //endregion Injection
 
     //region Average Marks
     @GET("/v2/persons/{person}/reporting-periods/{period}/avg-mark")
@@ -57,7 +69,7 @@ public interface DnevnikPartnersApi {
     Single<List<EduGroup>> getEduGroupsByPerson(@Path("person") long person);
 
     @GET("/v2/edu-groups/{group}/persons")
-    Single<List<Person>> getEduGroupPersons(@Path("group") long group);
+    Single<List<Person>> getEduGroupPersons(@Path("group") long group, @Query("includeArchive") Boolean includeArchive);
 
     @GET("/v2/edu-groups/{groupId}/parallel")
     Single<List<EduGroup>> getParallelGroups(@Path("groupId") long groupId);
@@ -130,11 +142,15 @@ public interface DnevnikPartnersApi {
     //endregion Person Marks
 
     //region Persons
+
+    /**
+     * {@link #getEduGroupPersons(long, Boolean)} is preferred
+     */
     @GET("/v2/edu-groups/{eduGroup}/students")
     Single<List<Person>> getPersonsByGroup(@Path("eduGroup") long eduGroup);
 
     @GET("/v2/persons/{person}")
-    Single<Person> getPersonsById(@Path("person") long person);
+    Single<Person> getPersonById(@Path("person") long person);
     //endregion Persons
 
     //region Recent Marks
@@ -158,7 +174,7 @@ public interface DnevnikPartnersApi {
     Single<School> getSchool(@Path("school") int school);
 
     @GET("/v2/schools")
-    Single<School> getSchools(@Query("schools") List<Integer> schools);
+    Single<List<School>> getSchools(@Query("schools") List<Integer> schools);
 
     @GET("/v2/schools/{school}/membership")
     Single<List<Person>> getSchoolMembership(@Path("school") int school, @Query("schoolMembershipType") SchoolMembershipType type);
@@ -240,7 +256,7 @@ public interface DnevnikPartnersApi {
 
     //region Weighted Average Marks
     @GET("/v2/edu-groups/{group}/wa-marks/{from}/{to}")
-    Single<WeightedMarksResponse> getWeightedMarks(@Path("group") String group, @Path("from") LocalDate from, @Path("to") LocalDate to);
+    Single<WeightedMarksResponse> getWeightedMarks(@Path("group") long group, @Path("from") LocalDate from, @Path("to") LocalDate to);
     //endregion Weighted Average Marks
 
     //region Works

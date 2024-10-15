@@ -1,11 +1,15 @@
 package api.dnevnik.partners.model.feed;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UserFeedLesson {
+public class UserFeedLesson implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long lessonId;
 
@@ -16,4 +20,9 @@ public class UserFeedLesson {
     private String subjectName;
 
     private List<ImportantWorkType> importantWorkTypes;
+
+    public void setApi(DnevnikPartnersApi api) {
+        this.api = api;
+        api.injectMany(importantWorkTypes);
+    }
 }

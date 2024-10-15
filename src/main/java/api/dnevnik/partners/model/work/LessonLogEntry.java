@@ -1,12 +1,16 @@
 package api.dnevnik.partners.model.work;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class LessonLogEntry {
+public class LessonLogEntry implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long person;
 
@@ -31,4 +35,5 @@ public class LessonLogEntry {
     public long getParsedLessonId() {
         return Long.parseLong(lessonStr);
     }
+
 }

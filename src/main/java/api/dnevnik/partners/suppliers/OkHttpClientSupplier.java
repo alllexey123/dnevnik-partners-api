@@ -10,6 +10,7 @@ public class OkHttpClientSupplier implements Supplier<OkHttpClient> {
     @Override
     public OkHttpClient get() {
         return new OkHttpClient.Builder()
+                //.addInterceptor(new HttpLoggingInterceptor(System.out::println).setLevel(HttpLoggingInterceptor.Level.BODY))
                 .addInterceptor(new AccessTokenInterceptor())
                 .build();
     }

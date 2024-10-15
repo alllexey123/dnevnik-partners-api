@@ -1,12 +1,16 @@
 package api.dnevnik.partners.model.feed;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class UserFeedDay {
+public class UserFeedDay implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private LocalDateTime date;
 
@@ -23,4 +27,14 @@ public class UserFeedDay {
     private List<UserFeedLesson> nextDaySchedule;
 
     private List<UserFeedLogEntry> logEntries;
+
+    public void setApi(DnevnikPartnersApi api) {
+        this.api = api;
+        api.inject(summary);
+        api.injectMany(todayHomeworks);
+        api.injectMany(todaySchedule);
+        api.injectMany(nextDayHomeworks);
+        api.injectMany(nextDaySchedule);
+        api.injectMany(logEntries);
+    }
 }

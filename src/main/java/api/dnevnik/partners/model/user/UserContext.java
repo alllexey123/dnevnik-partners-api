@@ -1,11 +1,15 @@
 package api.dnevnik.partners.model.user;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class UserContext {
+public class UserContext implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long userId;
 
@@ -21,7 +25,12 @@ public class UserContext {
 
     private String shortName;
 
-    private List<Integer> schoolIds;
+    private List<Long> schoolIds;
 
     private List<Long> groupIds;
+
+    public void setApi(DnevnikPartnersApi api) {
+        this.api = api;
+        api.injectMany(eduGroups);
+    }
 }

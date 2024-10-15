@@ -1,12 +1,17 @@
 package api.dnevnik.partners.model.user;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
+import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class ReportingPeriod {
+public class ReportingPeriod implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long id;
 
@@ -28,4 +33,10 @@ public class ReportingPeriod {
     public long getParsedId() {
         return Long.parseLong(idStr);
     }
+
+
+    public Single<String> getAverageMark(long person) {
+        return api.getAverageMarksByPeriod(person, getParsedId());
+    }
+
 }

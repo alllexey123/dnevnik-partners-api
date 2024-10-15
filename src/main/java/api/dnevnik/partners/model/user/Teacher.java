@@ -1,11 +1,15 @@
 package api.dnevnik.partners.model.user;
 
+import api.dnevnik.partners.DnevnikPartnersApi;
+import api.dnevnik.partners.model.ApiHolder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-public class Teacher {
+public class Teacher implements ApiHolder {
+
+    private DnevnikPartnersApi api;
 
     private long Id;
 

@@ -1,6 +1,6 @@
 package api.dnevnik.partners.data;
 
-public class RuntimeRepository implements DnevnikClientRepository {
+public class RuntimeAccessTokenRepository implements AccessTokenRepository {
 
     private String accessToken;
 
