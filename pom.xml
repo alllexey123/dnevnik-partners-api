@@ -104,6 +104,7 @@
                 <configuration>
                     <sourceDirectory>src/main/java</sourceDirectory>
                     <outputDirectory>${project.build.directory}/delombok</outputDirectory>
+                    <addOutputDirectory>true</addOutputDirectory>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -125,6 +126,26 @@
                                 </resource>
                             </resources>
                             <outputDirectory>${project.build.directory}/delombok</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>generate-delomboked-sources-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <jar destfile="${project.build.directory}/${project.build.finalName}-sources.jar"
+                                     basedir="${project.build.directory}/delombok"/>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -158,24 +179,6 @@
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
-            </plugin>
-            <!-- Plugin for Javadoc and Sources -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/delombok</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -231,6 +234,7 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
+                    <generatedSourcesDirectory>${project.build.directory}/delombok</generatedSourcesDirectory>
                 </configuration>
             </plugin>
             <plugin>
