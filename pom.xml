@@ -95,37 +95,16 @@
                 <version>1.18.20.0</version>
                 <executions>
                     <execution>
+                        <id>delombok-sources</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>delombok</goal>
                         </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sourceDirectory>src/main/java</sourceDirectory>
-                    <outputDirectory>${project.build.directory}/delombok</outputDirectory>
-                    <addOutputDirectory>true</addOutputDirectory>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-to-lombok-build</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
                         <configuration>
-                            <resources>
-                                <resource>
-                                    <directory>${project.basedir}/src/main/resources</directory>
-                                </resource>
-                            </resources>
+                            <sourceDirectory>src/main/java</sourceDirectory>
                             <outputDirectory>${project.build.directory}/delombok</outputDirectory>
+                            <addOutputDirectory>false</addOutputDirectory>
+                            <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
                 </executions>
@@ -151,24 +130,24 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>3.1.2</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>install-source-jar</id>
+                        <id>attach-delomboked-sources-jar</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>install-file</goal>
+                            <goal>attach-artifact</goal>
                         </goals>
-                        <phase>install</phase>
                         <configuration>
-                            <file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <version>${project.version}</version>
-                            <classifier>sources</classifier>
-                            <generatePom>true</generatePom>
-                            <pomFile>${project.basedir}/pom.xml</pomFile>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
+                                    <type>jar</type>
+                                    <classifier>sources</classifier>
+                                </artifact>
+                            </artifacts>
                         </configuration>
                     </execution>
                 </executions>
@@ -180,6 +159,7 @@
                     <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
+            <!-- Plugin for Javadoc and Sources -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -234,7 +214,6 @@
                 <configuration>
                     <source>8</source>
                     <target>8</target>
-                    <generatedSourcesDirectory>${project.build.directory}/delombok</generatedSourcesDirectory>
                 </configuration>
             </plugin>
             <plugin>
