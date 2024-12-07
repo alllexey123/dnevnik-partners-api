@@ -2,6 +2,7 @@ package api.dnevnik.partners.model.user;
 
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
+import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
 
 import java.util.List;
@@ -32,5 +33,13 @@ public class UserContext implements ApiHolder {
     public void setApi(DnevnikPartnersApi api) {
         this.api = api;
         api.injectMany(eduGroups);
+    }
+
+    /**
+     * Also returns subgroups, unlike {@link UserContext#groupIds}
+     * @return all groups with this person
+     */
+    public Single<List<EduGroup>> getAllEduGroups() {
+        return api.getGroupsByPerson(personId);
     }
 }

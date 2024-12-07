@@ -64,4 +64,8 @@ public class Mark implements ApiHolder {
     public Single<Person> getPerson() {
         return api.getPersonById(person);
     }
+
+    public long getPersonId() {
+        return person;
+    }
 }

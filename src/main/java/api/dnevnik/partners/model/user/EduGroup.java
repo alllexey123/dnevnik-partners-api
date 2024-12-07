@@ -61,12 +61,19 @@ public class EduGroup implements ApiHolder {
         return Long.parseLong(idStr);
     }
 
+    /**
+     * @return true if a group has parents (it is a subgroup), false otherwise
+     */
+    public boolean hasParentIds() {
+        return this.parentIds != null && !this.parentIds.isEmpty();
+    }
+
     public Flowable<Person> getPersons() {
-        return api.getEduGroupPersons(getParsedId(), false).flattenAsFlowable(personList -> personList);
+        return api.getGroupPersons(getParsedId(), false).flattenAsFlowable(personList -> personList);
     }
 
     public Flowable<Person> getArchivedPersons() {
-        return api.getEduGroupPersons(getParsedId(), true).flattenAsFlowable(personList -> personList);
+        return api.getGroupPersons(getParsedId(), true).flattenAsFlowable(personList -> personList);
     }
 
     public Flowable<EduGroup> getParallelGroups() {

@@ -40,7 +40,7 @@ public class Person implements ApiHolder {
     }
 
     public Single<List<EduGroup>> getEduGroups() {
-        return api.getEduGroupsByPerson(id);
+        return api.getGroupsByPerson(id);
     }
 
     public Single<List<SubjectFinalMark>> getFinalMarksByGroup(long groupId) {

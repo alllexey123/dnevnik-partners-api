@@ -63,16 +63,19 @@ public interface DnevnikPartnersApi {
 
     //region Edu Groups
     @GET("/v2/edu-groups/{eduGroup}")
-    Single<EduGroup> getEduGroupById(@Path("eduGroup") long eduGroup);
+    Single<EduGroup> getGroupById(@Path("eduGroup") long eduGroup);
 
     @GET("/v2/persons/{person}/edu-groups")
-    Single<List<EduGroup>> getEduGroupsByPerson(@Path("person") long person);
+    Single<List<EduGroup>> getGroupsByPerson(@Path("person") long person);
 
     @GET("/v2/edu-groups/{group}/persons")
-    Single<List<Person>> getEduGroupPersons(@Path("group") long group, @Query("includeArchive") Boolean includeArchive);
+    Single<List<Person>> getGroupPersons(@Path("group") long group, @Query("includeArchive") Boolean includeArchive);
 
     @GET("/v2/edu-groups/{groupId}/parallel")
     Single<List<EduGroup>> getParallelGroups(@Path("groupId") long groupId);
+
+    @GET("/v2/persons/{person}/schools/{school}/edu-groups/teacher")
+    Single<List<EduGroup>> getGroupsByTeacher(@Path("person") long teacherId, @Path("school") long schoolId);
     //endregion Edu Groups
 
     //region Final Marks
@@ -119,7 +122,7 @@ public interface DnevnikPartnersApi {
 
     //region Person Marks
     @GET("/v2/persons/{person}/schools/{school}/marks/{from}/{to}")
-    Single<List<Mark>> getPersonMarksBySchoolAndDates(@Path("person") long person, @Path("school") int school, @Path("from") LocalDate from, @Path("to") LocalDate to);
+    Single<List<Mark>> getPersonMarksBySchoolAndDates(@Path("person") long person, @Path("school") long school, @Path("from") LocalDate from, @Path("to") LocalDate to);
 
     @GET("/v2/persons/{person}/edu-groups/{group}/marks/{from}/{to}")
     Single<List<Mark>> getPersonMarksByGroupAndDates(@Path("person") long person, @Path("group") long group, @Path("from") LocalDate from, @Path("to") LocalDate to);
@@ -144,7 +147,7 @@ public interface DnevnikPartnersApi {
     //region Persons
 
     /**
-     * {@link #getEduGroupPersons(long, Boolean)} is preferred
+     * {@link #getGroupPersons(long, Boolean)} is preferred
      */
     @GET("/v2/edu-groups/{eduGroup}/students")
     Single<List<Person>> getPersonsByGroup(@Path("eduGroup") long eduGroup);
@@ -171,13 +174,13 @@ public interface DnevnikPartnersApi {
 
     //region School
     @GET("/v2/schools/{school}")
-    Single<School> getSchool(@Path("school") int school);
+    Single<School> getSchool(@Path("school") long school);
 
     @GET("/v2/schools")
     Single<List<School>> getSchools(@Query("schools") List<Integer> schools);
 
     @GET("/v2/schools/{school}/membership")
-    Single<List<Person>> getSchoolMembership(@Path("school") int school, @Query("schoolMembershipType") SchoolMembershipType type);
+    Single<List<Person>> getSchoolMembership(@Path("school") long school, @Query("schoolMembershipType") SchoolMembershipType type);
     //endregion School
 
     //region Subjects
@@ -185,7 +188,7 @@ public interface DnevnikPartnersApi {
     Single<List<Subject>> getSubjectsByGroup(@Path("eduGroup") long eduGroup);
 
     @GET("/v2/schools/{school}/subjects")
-    Single<List<Subject>> getSubjectsBySchool(@Path("school") int school);
+    Single<List<Subject>> getSubjectsBySchool(@Path("school") long school);
     //endregion Subjects
 
     //region Tasks
@@ -210,7 +213,7 @@ public interface DnevnikPartnersApi {
 
     //region Teachers
     @GET("/v2/schools/{school}/teachers")
-    Single<List<Teacher>> getTeachersBySchool(@Path("school") int school);
+    Single<List<Teacher>> getTeachersBySchool(@Path("school") long school);
 
     @GET("/v2/edu-groups/{group}/teachers")
     Single<List<Person>> getTeachersByGroup(@Path("group") long group);
@@ -221,7 +224,7 @@ public interface DnevnikPartnersApi {
 
     //region Timetables
     @GET("/v2/schools/{school}/timetables")
-    Single<List<Timetable>> getTimetablesBySchool(@Path("school") int school);
+    Single<List<Timetable>> getTimetablesBySchool(@Path("school") long school);
 
     @GET("/v2/edu-groups/{eduGroup}/timetables")
     Single<List<Timetable>> getTimetablesByGroup(@Path("eduGroup") long eduGroup);
@@ -269,7 +272,7 @@ public interface DnevnikPartnersApi {
 
     //region Work Types
     @GET("/v2/work-types/{school}")
-    Single<List<WorkType>> getWorkTypesBySchool(@Path("school") int school);
+    Single<List<WorkType>> getWorkTypesBySchool(@Path("school") long school);
 
     //endregion Work Types
 }

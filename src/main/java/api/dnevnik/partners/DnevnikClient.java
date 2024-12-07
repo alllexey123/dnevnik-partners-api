@@ -113,23 +113,28 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<EduGroup> getEduGroupById(long eduGroup) {
-        return api.getEduGroupById(eduGroup).map(this::inject);
+    public Single<EduGroup> getGroupById(long eduGroup) {
+        return api.getGroupById(eduGroup).map(this::inject);
     }
 
     @Override
-    public Single<List<EduGroup>> getEduGroupsByPerson(long person) {
-        return api.getEduGroupsByPerson(person).map(this::injectMany);
+    public Single<List<EduGroup>> getGroupsByPerson(long person) {
+        return api.getGroupsByPerson(person).map(this::injectMany);
     }
 
     @Override
-    public Single<List<Person>> getEduGroupPersons(long group, Boolean archive) {
-        return api.getEduGroupPersons(group, archive).map(this::injectMany);
+    public Single<List<Person>> getGroupPersons(long group, Boolean archive) {
+        return api.getGroupPersons(group, archive).map(this::injectMany);
     }
 
     @Override
     public Single<List<EduGroup>> getParallelGroups(long groupId) {
         return api.getParallelGroups(groupId).map(this::injectMany);
+    }
+
+    @Override
+    public Single<List<EduGroup>> getGroupsByTeacher(long teacherId, long schoolId) {
+        return api.getGroupsByTeacher(teacherId, schoolId).map(this::injectMany);
     }
 
     @Override
@@ -193,7 +198,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Mark>> getPersonMarksBySchoolAndDates(long person, int school, LocalDate from, LocalDate to) {
+    public Single<List<Mark>> getPersonMarksBySchoolAndDates(long person, long school, LocalDate from, LocalDate to) {
         return api.getPersonMarksBySchoolAndDates(person, school, from, to).map(this::injectMany);
     }
 
@@ -253,7 +258,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<School> getSchool(int school) {
+    public Single<School> getSchool(long school) {
         return api.getSchool(school).map(this::inject);
     }
 
@@ -263,7 +268,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Person>> getSchoolMembership(int school, SchoolMembershipType type) {
+    public Single<List<Person>> getSchoolMembership(long school, SchoolMembershipType type) {
         return api.getSchoolMembership(school, type).map(this::injectMany);
     }
 
@@ -273,7 +278,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Subject>> getSubjectsBySchool(int school) {
+    public Single<List<Subject>> getSubjectsBySchool(long school) {
         return api.getSubjectsBySchool(school).map(this::injectMany);
     }
 
@@ -303,7 +308,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Teacher>> getTeachersBySchool(int school) {
+    public Single<List<Teacher>> getTeachersBySchool(long school) {
         return api.getTeachersBySchool(school).map(this::injectMany);
     }
 
@@ -318,7 +323,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Timetable>> getTimetablesBySchool(int school) {
+    public Single<List<Timetable>> getTimetablesBySchool(long school) {
         return api.getTimetablesBySchool(school);
     }
 
@@ -378,7 +383,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<WorkType>> getWorkTypesBySchool(int school) {
+    public Single<List<WorkType>> getWorkTypesBySchool(long school) {
         return api.getWorkTypesBySchool(school);
     }
 }

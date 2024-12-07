@@ -6,7 +6,7 @@
 
     <groupId>io.github.alllexey123</groupId>
     <artifactId>dnevnik-partners-api</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <name>dnevnik-partners-api</name>
     <description>A library created to simplify access to dnevnik.ru partners API.</description>
