@@ -213,6 +213,9 @@ public interface DnevnikPartnersApi {
     //endregion Person Tasks
 
     //region Teachers
+    @GET("/v2/teacher/{teacher}/students")
+    Single<List<PersonsWrapper>> getStudentsByTeacher(@Path("teacher") long teacher);
+
     @GET("/v2/schools/{school}/teachers")
     Single<List<Teacher>> getTeachersBySchool(@Path("school") long school);
 

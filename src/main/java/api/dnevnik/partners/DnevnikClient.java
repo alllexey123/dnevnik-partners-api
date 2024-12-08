@@ -313,6 +313,11 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
+    public Single<List<PersonsWrapper>> getStudentsByTeacher(long teacher) {
+        return api.getStudentsByTeacher(teacher).map(this::injectMany);
+    }
+
+    @Override
     public Single<List<Teacher>> getTeachersBySchool(long school) {
         return api.getTeachersBySchool(school).map(this::injectMany);
     }
