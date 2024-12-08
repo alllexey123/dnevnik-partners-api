@@ -6,7 +6,7 @@
 
     <groupId>io.github.alllexey123</groupId>
     <artifactId>dnevnik-partners-api</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <name>dnevnik-partners-api</name>
     <description>A library created to simplify access to dnevnik.ru partners API.</description>
@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:git://github.com/alllexey123/dnevnik-partners-api.git</connection>
         <developerConnection>scm:git:ssh://github.com:alllexey123/dnevnik-partners-api.git</developerConnection>
-        <url>http://github.com/alllexey123/dnevnik-partners-api/</url>
+        <url>https://github.com/alllexey123/dnevnik-partners-api/</url>
     </scm>
 
     <properties>

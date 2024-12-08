@@ -118,6 +118,11 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
+    public Single<List<StudentsWrapper>> getGroupsWithStudentsByIds(List<Long> groupIds) {
+        return api.getGroupsWithStudentsByIds(groupIds).map(this::injectMany);
+    }
+
+    @Override
     public Single<List<EduGroup>> getGroupsByPerson(long person) {
         return api.getGroupsByPerson(person).map(this::injectMany);
     }

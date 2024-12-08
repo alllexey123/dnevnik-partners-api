@@ -10,9 +10,7 @@ import api.dnevnik.partners.model.schedule.Timetable;
 import api.dnevnik.partners.model.user.*;
 import api.dnevnik.partners.model.work.*;
 import io.reactivex.rxjava3.core.Single;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit2.http.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -64,6 +62,9 @@ public interface DnevnikPartnersApi {
     //region Edu Groups
     @GET("/v2/edu-groups/{eduGroup}")
     Single<EduGroup> getGroupById(@Path("eduGroup") long eduGroup);
+
+    @POST("/v2/edu-groups")
+    Single<List<StudentsWrapper>> getGroupsWithStudentsByIds(@Body List<Long> groupIds);
 
     @GET("/v2/persons/{person}/edu-groups")
     Single<List<EduGroup>> getGroupsByPerson(@Path("person") long person);
