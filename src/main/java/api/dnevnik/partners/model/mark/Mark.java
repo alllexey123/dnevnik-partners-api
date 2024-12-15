@@ -6,12 +6,15 @@ import api.dnevnik.partners.model.user.Person;
 import com.google.gson.annotations.SerializedName;
 import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Data
 public class Mark implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long id;

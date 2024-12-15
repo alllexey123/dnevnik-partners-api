@@ -4,6 +4,8 @@ import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @Data
 public class Work implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long id;

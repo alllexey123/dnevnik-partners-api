@@ -4,10 +4,13 @@ import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 public class SubjectFinalMark implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long subject;

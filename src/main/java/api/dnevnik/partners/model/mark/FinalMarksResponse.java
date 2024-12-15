@@ -6,12 +6,15 @@ import api.dnevnik.partners.model.work.Subject;
 import api.dnevnik.partners.model.work.Work;
 import api.dnevnik.partners.model.work.WorkType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
 public class FinalMarksResponse implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private List<Mark> marks;

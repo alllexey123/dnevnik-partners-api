@@ -3,6 +3,8 @@ package api.dnevnik.partners.model.feed;
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @Data
 public class UserFeedDay implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private LocalDateTime date;

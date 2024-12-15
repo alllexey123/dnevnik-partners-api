@@ -5,6 +5,8 @@ import api.dnevnik.partners.model.ApiHolder;
 import api.dnevnik.partners.model.mark.Mark;
 import api.dnevnik.partners.model.work.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.OffsetDateTime;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 @Data
 public class DaySchedule implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private OffsetDateTime date;

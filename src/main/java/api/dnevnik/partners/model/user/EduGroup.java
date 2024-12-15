@@ -10,6 +10,8 @@ import com.google.gson.annotations.SerializedName;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.List;
 @Data
 public class EduGroup implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long id;

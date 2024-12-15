@@ -5,13 +5,16 @@ import api.dnevnik.partners.model.ApiHolder;
 import com.google.gson.annotations.SerializedName;
 import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 public class User implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long id;
@@ -50,7 +53,7 @@ public class User implements ApiHolder {
 
     private String photoLarge;
 
-    private OffsetDateTime birthday;
+    private LocalDateTime birthday;
 
     private List<Role> roles;
 

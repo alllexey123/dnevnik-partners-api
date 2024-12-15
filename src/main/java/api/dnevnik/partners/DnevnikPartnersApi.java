@@ -178,7 +178,7 @@ public interface DnevnikPartnersApi {
     Single<School> getSchool(@Path("school") long school);
 
     @GET("/v2/schools")
-    Single<List<School>> getSchools(@Query("schools") List<Integer> schools);
+    Single<List<School>> getSchools(@Query("schools") List<Long> schools);
 
     @GET("/v2/schools/{school}/membership")
     Single<List<Person>> getSchoolMembership(@Path("school") long school, @Query("schoolMembershipType") SchoolMembershipType type);

@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class SubjectAverage {
 
-
     private long subject;
 
     @SerializedName("subject_str")

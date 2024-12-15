@@ -4,12 +4,15 @@ import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
 import api.dnevnik.partners.model.mark.Mark;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
 public class UserFeedMarkCard implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private List<Mark> marks;

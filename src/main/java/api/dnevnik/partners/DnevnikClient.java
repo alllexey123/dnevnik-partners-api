@@ -12,7 +12,6 @@ import api.dnevnik.partners.network.AccessTokenProvider;
 import api.dnevnik.partners.suppliers.*;
 import com.google.gson.Gson;
 import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import lombok.*;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -27,8 +26,6 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     private DnevnikPartnersApi api;
 
     private AccessTokenRepository repository;
-
-    private BehaviorSubject<UserContext> lastContextResponse = BehaviorSubject.create();
 
     protected DnevnikClient() {
     }
@@ -46,10 +43,6 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
         return dnevnikClient;
     }
 
-    public Single<UserContext> updateUserContext() {
-        return this.api.getContext().map(this::inject).doOnSuccess(this::handleUserContext);
-    }
-
     @Override
     public String getAccessToken() {
         return this.repository.getAccessToken();
@@ -58,24 +51,6 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     public void setAccessToken(String accessToken) {
         this.repository.setAccessToken(accessToken);
     }
-
-    public Single<UserContext> getUserContext() {
-        if (this.lastContextResponse.hasValue()) return Single.just(this.lastContextResponse.getValue());
-        return updateUserContext();
-    }
-
-    public Single<Long> getPersonId() {
-        return getUserContext().map(UserContext::getPersonId);
-    }
-
-    public Single<Long> getUserId() {
-        return getUserContext().map(UserContext::getUserId);
-    }
-
-    public void handleUserContext(UserContext userContext) {
-        this.lastContextResponse.onNext(userContext);
-    }
-
 
     @Override
     public Single<String> getAverageMarksByPeriod(long person, long period) {
@@ -268,7 +243,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<School>> getSchools(List<Integer> schools) {
+    public Single<List<School>> getSchools(List<Long> schools) {
         return api.getSchools(schools).map(this::injectMany);
     }
 

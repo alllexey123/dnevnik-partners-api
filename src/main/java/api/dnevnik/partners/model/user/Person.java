@@ -7,12 +7,15 @@ import api.dnevnik.partners.model.mark.SubjectFinalMark;
 import com.google.gson.annotations.SerializedName;
 import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
 @Data
 public class Person implements ApiHolder {
 
+    @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
     private long id;
@@ -20,7 +23,8 @@ public class Person implements ApiHolder {
     @SerializedName("id_str")
     private String idStr;
 
-    private long userId;
+    // sometimes can be null
+    private Long userId;
 
     @SerializedName("userId_str")
     private String userIdStr;
@@ -50,7 +54,4 @@ public class Person implements ApiHolder {
     public Single<FinalMarksResponse> getAllFinalMarksByGroup(long groupId) {
         return api.getAllFinalMarksByPerson(id, groupId);
     }
-
-    
-
 }
