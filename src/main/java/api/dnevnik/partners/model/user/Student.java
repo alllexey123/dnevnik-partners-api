@@ -2,6 +2,7 @@ package api.dnevnik.partners.model.user;
 
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -14,6 +15,7 @@ public class Student implements ApiHolder {
 
     private Person person;
 
+    @SerializedName("membershipstatus")
     private MembershipStatus membershipStatus;
 
     @Override
