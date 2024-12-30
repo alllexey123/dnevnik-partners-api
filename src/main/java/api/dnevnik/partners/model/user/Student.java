@@ -14,6 +14,8 @@ public class Student implements ApiHolder {
 
     private Person person;
 
+    private MembershipStatus membershipStatus;
+
     @Override
     public void setApi(DnevnikPartnersApi api) {
         this.api = api;
