@@ -353,6 +353,11 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
+    public Single<List<User>> getUsers(List<Long> userIds) {
+        return api.getUsers(userIds).map(this::injectMany);
+    }
+
+    @Override
     public Single<WeightedMarksResponse> getWeightedMarks(long group, LocalDate from, LocalDate to) {
         return api.getWeightedMarks(group, from, to);
     }

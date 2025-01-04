@@ -259,6 +259,9 @@ public interface DnevnikPartnersApi {
 
     @GET("/v2/users/me/roles")
     Single<List<String>> getUserRoles();
+
+    @POST("/v2/users/many")
+    Single<List<User>> getUsers(@Body List<Long> userIds);
     //endregion User
 
     //region Weighted Average Marks

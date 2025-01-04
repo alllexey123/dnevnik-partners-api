@@ -7,6 +7,15 @@ public enum Role {
     @SerializedName("EduStudent")
     EDU_STUDENT,
 
-    @SerializedName("UserAdministrator")
-    USER_ADMINISTRATOR
+    @SerializedName("EduStaff")
+    EDU_STAFF,
+
+    @SerializedName("EduParent")
+    EDU_PARENT,
+
+    @SerializedName("OrganizationStaff")
+    ORGANIZATION_STAFF,
+
+    @SerializedName("EduSchoolAdministrator")
+    EDU_SCHOOL_ADMINISTRATOR,
 }

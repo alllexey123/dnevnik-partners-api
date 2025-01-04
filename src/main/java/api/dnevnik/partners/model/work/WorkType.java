@@ -7,7 +7,7 @@ public class WorkType {
 
     private long id;
 
-    private int schoolId;
+    private long schoolId;
 
     private String abbreviation;
 
@@ -17,7 +17,7 @@ public class WorkType {
 
     private boolean isImportant;
 
-    private int kindId;
+    private long kindId;
 
     private String kind;
 }
