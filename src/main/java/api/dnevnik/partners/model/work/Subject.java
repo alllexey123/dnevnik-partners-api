@@ -22,5 +22,5 @@ public class Subject implements ApiHolder {
 
     private Long fgosSubjectId;
 
-    private Long espSubjectName;
+    private String espSubjectName;
 }
