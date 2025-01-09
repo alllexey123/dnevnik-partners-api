@@ -32,7 +32,7 @@ public class EduGroup implements ApiHolder {
     @SerializedName("parentIds_str")
     private List<String> parentIdsStr;
 
-    private String type;
+    private GroupType type;
 
     private String name;
 
