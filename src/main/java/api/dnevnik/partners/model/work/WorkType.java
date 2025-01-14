@@ -9,15 +9,13 @@ public class WorkType {
 
     private long schoolId;
 
-    private String abbreviation;
-
-    private String name;
-
-    private boolean isFinal;
-
-    private boolean isImportant;
-
-    private long kindId;
+    private Long kindId;
 
     private String kind;
+
+    private String title;
+
+    private String abbr;
+
+    private Long weight;
 }
