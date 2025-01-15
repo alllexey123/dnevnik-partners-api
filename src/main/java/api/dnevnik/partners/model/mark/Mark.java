@@ -30,6 +30,7 @@ public class Mark implements ApiHolder {
 
     private long person;
 
+    @SerializedName("person_str")
     private String personStr;
 
     private long work;
@@ -47,11 +48,10 @@ public class Mark implements ApiHolder {
 
     private long workType;
 
-    private String mood;
+    private Mood mood;
 
     private boolean use_avg_calc;
 
-    // preferred
     public long getParsedId() {
         return Long.parseLong(idStr);
     }
@@ -64,11 +64,7 @@ public class Mark implements ApiHolder {
         return Long.parseLong(lessonStr);
     }
 
-    public Single<Person> getPerson() {
+    public Single<Person> getPersonById() {
         return api.getPersonById(person);
-    }
-
-    public long getPersonId() {
-        return person;
     }
 }
