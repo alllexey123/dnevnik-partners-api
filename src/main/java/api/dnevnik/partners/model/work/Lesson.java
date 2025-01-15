@@ -37,6 +37,8 @@ public class Lesson implements ApiHolder {
 
     private List<String> teachersStr;
 
+    private String status;
+
     public long getParsedId() {
         return Long.parseLong(idStr);
     }
