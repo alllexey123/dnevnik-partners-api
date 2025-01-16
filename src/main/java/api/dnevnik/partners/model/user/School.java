@@ -34,7 +34,7 @@ public class School implements ApiHolder, IdHolder {
     @SerializedName("uses_weighted_avg")
     private boolean usesWeightedAvg;
 
-    private long id;
+    private Long id;
 
     @SerializedName("id_str")
     private String idStr;

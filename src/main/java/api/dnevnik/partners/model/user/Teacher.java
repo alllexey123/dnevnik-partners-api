@@ -15,11 +15,11 @@ public class Teacher implements ApiHolder, IdHolder {
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
-    private long Id;
+    private Long Id;
 
     private String IdStr;
 
-    private long UserId;
+    private Long UserId;
 
     private String UserIdStr;
 

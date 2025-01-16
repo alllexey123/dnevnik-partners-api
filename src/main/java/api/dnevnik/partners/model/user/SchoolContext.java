@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class SchoolContext implements IdHolder {
 
-    private long id;
+    private Long id;
 
     private String name;
 

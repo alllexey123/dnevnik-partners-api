@@ -13,7 +13,7 @@ public class Subject implements ApiHolder, IdHolder {
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
-    private long id;
+    private Long id;
 
     private String idStr;
 

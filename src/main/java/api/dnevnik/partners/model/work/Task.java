@@ -16,7 +16,7 @@ public class Task implements ApiHolder, IdHolder {
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;
 
-    private long id;
+    private Long id;
 
     @SerializedName("id_str")
     private String idStr;

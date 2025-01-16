@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class WorkType implements IdHolder {
 
-    private long id;
+    private Long id;
 
-    private long schoolId;
+    private Long schoolId;
 
     private Long kindId;
 
