@@ -13,6 +13,7 @@ import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -115,7 +116,7 @@ public interface DnevnikPartnersApi {
     Single<List<Mark>> getMarksByLesson(@Path("lesson") long lesson);
 
     @GET("/v2/edu-groups/{group}/marks/{from}/{to}")
-    Single<List<Mark>> getMarksByGroupAndDates(@Path("group") long group, @Path("from") LocalDate from, @Path("to") LocalDate to);
+    Single<List<Mark>> getMarksByGroupAndDates(@Path("group") long group, @Path("from") LocalDateTime from, @Path("to") LocalDateTime to);
 
     @GET("/v2/edu-groups/{group}/subjects/{subject}/marks/{from}/{to}")
     Single<List<Mark>> getMarksBySubjectAndDates(@Path("group") long group, @Path("subject") long subject, @Path("from") LocalDate from, @Path("to") LocalDate to);

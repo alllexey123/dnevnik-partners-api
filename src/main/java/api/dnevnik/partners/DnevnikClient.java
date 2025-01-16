@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -168,7 +169,7 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
-    public Single<List<Mark>> getMarksByGroupAndDates(long group, LocalDate from, LocalDate to) {
+    public Single<List<Mark>> getMarksByGroupAndDates(long group, LocalDateTime from, LocalDateTime to) {
         return api.getMarksByGroupAndDates(group, from, to).map(this::injectMany);
     }
 

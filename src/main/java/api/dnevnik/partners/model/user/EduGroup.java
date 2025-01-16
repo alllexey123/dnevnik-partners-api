@@ -15,6 +15,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -108,7 +109,7 @@ public class EduGroup implements ApiHolder, IdHolder {
         return api.getFinalMarksBySubject(getParsedId(), subject).flattenAsFlowable(finalMarks -> finalMarks);
     }
 
-    public Flowable<Mark> getMarksByDates(LocalDate from, LocalDate to) {
+    public Flowable<Mark> getMarksByDates(LocalDateTime from, LocalDateTime to) {
         return api.getMarksByGroupAndDates(getParsedId(), from, to).flattenAsFlowable(marks -> marks);
     }
 
