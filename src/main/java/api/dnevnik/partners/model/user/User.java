@@ -2,6 +2,7 @@ package api.dnevnik.partners.model.user;
 
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
+import api.dnevnik.partners.model.IdHolder;
 import com.google.gson.annotations.SerializedName;
 import io.reactivex.rxjava3.core.Single;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class User implements ApiHolder {
+public class User implements ApiHolder, IdHolder {
 
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;

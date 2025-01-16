@@ -2,6 +2,7 @@ package api.dnevnik.partners.model.user;
 
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
+import api.dnevnik.partners.model.IdHolder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -9,7 +10,7 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Data
-public class Teacher implements ApiHolder {
+public class Teacher implements ApiHolder, IdHolder {
 
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;

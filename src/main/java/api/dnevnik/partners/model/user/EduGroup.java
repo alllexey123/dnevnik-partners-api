@@ -2,6 +2,7 @@ package api.dnevnik.partners.model.user;
 
 import api.dnevnik.partners.DnevnikPartnersApi;
 import api.dnevnik.partners.model.ApiHolder;
+import api.dnevnik.partners.model.IdHolder;
 import api.dnevnik.partners.model.mark.*;
 import api.dnevnik.partners.model.schedule.DaySchedule;
 import api.dnevnik.partners.model.schedule.Timetable;
@@ -17,7 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data
-public class EduGroup implements ApiHolder {
+public class EduGroup implements ApiHolder, IdHolder {
 
     @ToString.Exclude @EqualsAndHashCode.Exclude
     private DnevnikPartnersApi api;

@@ -1,9 +1,10 @@
 package api.dnevnik.partners.model.work;
 
+import api.dnevnik.partners.model.IdHolder;
 import lombok.Data;
 
 @Data
-public class WorkType {
+public class WorkType implements IdHolder {
 
     private long id;
 
