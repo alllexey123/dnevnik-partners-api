@@ -144,6 +144,11 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
+    public Single<List<Lesson>> getLessons(List<Long> lessonIds) {
+        return api.getLessons(lessonIds).map(this::injectMany);
+    }
+
+    @Override
     public Single<List<Lesson>> getLessonsByDates(long group, LocalDate from, LocalDate to) {
         return api.getLessonsByDates(group, from, to).map(this::injectMany);
     }
@@ -371,6 +376,11 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     @Override
     public Single<Work> getWorkById(long work) {
         return api.getWorkById(work).map(this::inject);
+    }
+
+    @Override
+    public Single<List<Work>> getWorks(List<Long> workIds) {
+        return api.getWorks(workIds).map(this::injectMany);
     }
 
     @Override

@@ -98,6 +98,9 @@ public interface DnevnikPartnersApi {
     @GET("/v2/lessons/{lesson}")
     Single<Lesson> getLessonById(@Path("lesson") long lesson);
 
+    @POST("/v2/lessons/many")
+    Single<List<Lesson>> getLessons(@Body List<Long> lessonIds);
+
     @GET("/v2/edu-groups/{group}/lessons/{from}/{to}")
     Single<List<Lesson>> getLessonsByDates(@Path("group") long group, @Path("from") LocalDate from, @Path("to") LocalDate to);
 
@@ -276,6 +279,9 @@ public interface DnevnikPartnersApi {
 
     @GET("/v2/works/{work}")
     Single<Work> getWorkById(@Path("work") long work);
+
+    @POST("/v2/works/many")
+    Single<List<Work>> getWorks(@Body List<Long> workIds);
     //endregion Works
 
     //region Work Types
