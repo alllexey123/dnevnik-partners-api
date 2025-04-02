@@ -94,6 +94,14 @@ public interface DnevnikPartnersApi {
     Single<List<Mark>> getFinalMarksBySubject(@Path("group") long group, @Path("subject") long subject);
     //endregion Final Marks
 
+    //region LessonLog
+    @GET("/v2/lessons/{lesson}/log-entries")
+    Single<List<LessonLogEntry>> getLessonLogEntries(@Path("lesson") long lesson);
+
+    @GET("/v2/lesson-log-entries/group/{group}")
+    Single<List<LessonLogEntry>> getLessonLogEntriesByGroup(@Path("group") long group, @Query("subject") Long subject, @Query("from") LocalDateTime from, @Query("to") LocalDateTime to);
+    //endregion LessonLog
+
     //region Lessons
     @GET("/v2/lessons/{lesson}")
     Single<Lesson> getLessonById(@Path("lesson") long lesson);

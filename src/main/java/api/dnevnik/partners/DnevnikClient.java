@@ -139,6 +139,16 @@ public class DnevnikClient implements AccessTokenProvider, DnevnikPartnersApi {
     }
 
     @Override
+    public Single<List<LessonLogEntry>> getLessonLogEntries(long lesson) {
+        return api.getLessonLogEntries(lesson).map(this::injectMany);
+    }
+
+    @Override
+    public Single<List<LessonLogEntry>> getLessonLogEntriesByGroup(long group, Long subject, LocalDateTime from, LocalDateTime to) {
+        return api.getLessonLogEntriesByGroup(group, subject, from, to).map(this::injectMany);
+    }
+
+    @Override
     public Single<Lesson> getLessonById(long lesson) {
         return api.getLessonById(lesson).map(this::inject);
     }
